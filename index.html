@@ -76,6 +76,7 @@
   .h-label{font-weight:800;text-shadow:0 1px 0 var(--cyan-shadow);margin-bottom:16px;font-size:var(--label);text-transform:uppercase;letter-spacing:.14em;}
   .tags{margin:0;padding:0;list-style:none;}
   .tags li{display:inline-block;margin:0 10px 12px 0;background:#fff;border-bottom:1px solid var(--cyan-shadow);color:var(--cyan);padding:0 12px;font-weight:800;text-transform:uppercase;font-size:clamp(13px,1.1vw,16px);line-height:32px;}
+  .tag-break{display:none;}
 
   .who-label{font-weight:800;margin-bottom:18px;font-size:var(--label);text-transform:uppercase;letter-spacing:.14em;color:var(--indigo-tint);}
   .who{margin:0 0 26px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px 40px;max-width:900px;}
@@ -91,10 +92,42 @@
   .to-top{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);padding-top:24px;background:url(images/more.svg) no-repeat 50% 0;background-size:24px 18px;width:120px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;cursor:none;}
 
   @media (max-width:1000px){
+    /* Panels size to content; equal 40px side gutters (fixed px, not vw) */
     body{height:auto!important;}
-    .slide{position:static!important;height:auto!important;min-height:100vh;overflow:visible;}
-    .navigation{display:none;}
-    #slide1 .inner{padding:72px 0 64px;}
+    .slide{position:static!important;height:auto!important;min-height:0!important;overflow:visible;}
+    /* First slide sizes to its content so the next section peeks above the fold */
+    .inner{width:100%!important;padding:60px 40px 64px!important;justify-content:flex-start!important;}
+    #slide1 .inner,#slide2 .inner,#slide3 .inner,#slide4 .inner{padding:60px 40px 48px!important;}
+    /* Hero kicker ("Playful marketing") a touch smaller */
+    #slide1 .kicker{font-size:clamp(13px,1.6vw,18px)!important;}
+
+    /* Hero: words shrink to fit, never clip; sub-line stacks */
+    .hero-words{font-size:clamp(33px,10vw,50px)!important;line-height:.96!important;overflow-wrap:break-word;word-break:break-word;}
+    .hero-words br{display:none!important;}
+    .subline{flex-direction:column!important;align-items:flex-start!important;margin-top:28px!important;gap:14px!important;}
+    .subline .lead{width:100%;font-size:22px!important;}
+    .subline p{width:100%;min-width:0;flex:none;font-size:16px!important;}
+
+    /* Colour nav bars are redundant on mobile (you just scroll) — hide them */
+    .navigation{display:none!important;}
+
+    /* Quote headlines a touch smaller to avoid awkward wraps */
+    .quote{font-size:clamp(24px,7vw,36px)!important;}
+
+    /* Stack two-column blocks */
+    .two-col,.who{grid-template-columns:1fr!important;gap:18px!important;}
+
+    /* Tag chips hug their own text */
+    .tags{display:flex!important;flex-wrap:wrap!important;gap:10px!important;}
+    .tags li{margin:0!important;font-size:12px!important;line-height:1.25!important;padding:8px 13px!important;
+      width:max-content!important;max-width:100%!important;white-space:pre-line!important;}
+    .tag-break{display:inline!important;}
+
+    /* Contact links: underline hugs the text instead of stretching full width */
+    .contact .details a{align-self:flex-start;width:fit-content;}
+
+    /* Back-to-top flows under content */
+    .to-top{position:static!important;transform:none!important;margin:32px auto 0!important;}
   }
 </style>
 </head>
@@ -150,7 +183,7 @@
           <li>Go-to-market strategy</li>
           <li>Content &amp; campaign planning</li>
           <li>Marketing team coaching</li>
-          <li>Direct marketing — electronic, paper &amp; gifting</li>
+          <li>Direct marketing —<br class="tag-break">electronic, paper &amp; gifting</li>
           <li>Experiential marketing</li>
         </ul>
       </div>

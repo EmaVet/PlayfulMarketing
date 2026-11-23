@@ -90,12 +90,10 @@
 
   /* Clients */
   #clients .eyebrow{color:var(--green-tint);text-shadow:0 1px 0 var(--green-shadow);}
-  .clients{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,3.4vh,34px) 40px;}
-  .clients li{padding:2px 0 2px 20px;border-left:6px solid #fff;}
-  .clients .name{display:block;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;font-size:clamp(19px,min(2vw,3.6vh),28px);color:#fff;text-shadow:0 1px 0 var(--green-shadow);}
-  .clients a.name{cursor:none;}
-  .clients a.name span{border-bottom:2px solid rgba(255,255,255,.7);}
-  .clients .what{display:block;margin-top:8px;font-weight:600;line-height:1.4;font-size:var(--body);color:#fff;text-shadow:0 1px 0 var(--green-shadow);}
+  .clients{margin:0;padding:0;list-style:none;border-top:2px solid rgba(255,255,255,.45);}
+  .clients li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:6px 40px;align-items:baseline;padding:clamp(7px,1.5vh,14px) 0;border-bottom:2px solid rgba(255,255,255,.45);}
+  .clients .name{font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.15;font-size:clamp(18px,min(2vw,3.4vh),28px);color:#fff;text-shadow:0 1px 0 var(--green-shadow);overflow-wrap:anywhere;}
+  .clients .what{font-weight:600;line-height:1.4;font-size:var(--body);color:#fff;text-shadow:0 1px 0 var(--green-shadow);}
 
   /* Contact */
   .contact{display:flex;flex-wrap:wrap;gap:28px 44px;align-items:flex-start;}
@@ -138,7 +136,7 @@
 
     /* Stack two-column blocks */
     .two-col,.who{grid-template-columns:1fr!important;gap:18px!important;}
-    .clients{grid-template-columns:1fr!important;gap:22px!important;}
+    .clients li{grid-template-columns:1fr!important;gap:4px!important;padding:14px 0!important;}
     .clients .name{font-size:20px!important;}
 
     /* Tag chips hug their own text */
@@ -239,30 +237,13 @@
       <div class="eyebrow">Playing in good company.</div>
       <h2 class="quote">Clients &amp; projects</h2>
       <ul class="clients">
-        <li>
-          <span class="name">GetAroundThem.com</span>
-          <span class="what">Bendigo Community Bank Sanctuary Point campaign 2027</span>
-        </li>
-        <li>
-          <span class="name">5 Little Pigs</span>
-          <span class="what">Cafe waitlist app</span>
-        </li>
-        <li>
-          <span class="name">Vehicle Logic</span>
-          <span class="what">AI-first marketing operating system</span>
-        </li>
-        <li>
-          <span class="name">Enchantra</span>
-          <span class="what">App build &amp; marketing</span>
-        </li>
-        <li>
-          <span class="name">Glitterazzi</span>
-          <span class="what">Marketing</span>
-        </li>
-        <li>
-          <span class="name">She Shapes History</span>
-          <span class="what">Viral PR management</span>
-        </li>
+        <li><span class="name">GetAroundThem.com</span><span class="what">Website build</span></li>
+        <li><span class="name">5 Little Pigs</span><span class="what">Cafe waitlist app</span></li>
+        <li><span class="name">Vehicle Logic</span><span class="what">AI-first marketing operating system build and run</span></li>
+        <li><span class="name">Enchantra</span><span class="what">App build &amp; marketing</span></li>
+        <li><span class="name">Glitterazzi</span><span class="what">Marketing</span></li>
+        <li><span class="name">She Shapes History</span><span class="what">Viral PR management</span></li>
+        <li><span class="name">Tyre Review</span><span class="what">Website development · Email marketing · Content marketing</span></li>
       </ul>
     </div>
   </section>

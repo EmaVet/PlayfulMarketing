@@ -14,7 +14,8 @@
     --body:clamp(16px,min(1.5vw,2.4vh),23px);
     --headline:clamp(30px,min(4.6vw,6.2vh),64px);
     --label:clamp(13px,1.15vw,16px);
-    --yellow:#fffb00; --yellow-navtint:#c4c100;
+    --yellow:#fffb00;
+    --green:#10a85a; --green-shadow:#0b7a41; --green-tint:#c2f0d7;
     --bar:clamp(44px,7.4vh,64px);
     --pad:clamp(28px,6vh,96px);
   }
@@ -35,7 +36,7 @@
 
   /* Slide 1 — hero */
   #slide1{background:var(--light);color:var(--ink);}
-  #slide1 .inner{padding:clamp(32px,8vh,88px) 0 calc(var(--bar)*4 + 8px);}
+  #slide1 .inner{padding:clamp(32px,8vh,88px) 0 calc(var(--bar)*3 + 8px);}
   .kicker{margin:0 0 clamp(14px,3.2vh,26px);text-transform:uppercase;font-weight:800;line-height:1;letter-spacing:.2em;font-size:clamp(15px,1.6vw,20px);color:var(--pink);}
   .hero-words{margin:0;text-transform:uppercase;font-weight:800;line-height:.9;letter-spacing:-.015em;font-size:clamp(38px,min(8.2vw,10vh),104px);cursor:none;}
   .hero-words span{transition:color .25s ease;}
@@ -49,17 +50,16 @@
   .navigation li span{line-height:calc(var(--bar)*.75);display:block;width:min(100% - 12vw, 1000px);margin:calc(var(--bar)*.25) auto 0;font-weight:800;text-transform:uppercase;font-size:clamp(20px,min(3.2vw,5.2vh),44px);white-space:nowrap;transition:color .2s ease;}
   .navigation .n1{background:var(--cyan);}   .navigation .n1 span{color:var(--cyan-navtint);}
   .navigation .n2{background:var(--indigo);} .navigation .n2 span{color:var(--indigo-navtint);}
-  .navigation .n3{background:var(--yellow);} .navigation .n3 span{color:var(--yellow-navtint);}
-  .navigation .n4{background:var(--magenta);}.navigation .n4 span{color:var(--magenta-navtint);}
+  .navigation .n3{background:var(--magenta);}.navigation .n3 span{color:var(--magenta-navtint);}
   .navigation li:hover span{color:#fff;}
-  .navigation .n3:hover span{color:var(--ink);}
 
   /* Slides 2–5 */
   #slide2{background:var(--cyan);color:#fff;}
   #slide3{background:var(--indigo);color:#fff;}
   #slide4{background:var(--magenta);color:#fff;}
   #slide2 .inner,#slide4 .inner,#clients .inner{padding:var(--pad) 0;}
-  #clients{background:var(--yellow);color:var(--ink);}
+  #clients{background:var(--green);color:#fff;}
+  #clients .quote{text-shadow:0 1px 0 var(--green-shadow);}
   #slide3 .inner{padding:var(--pad) 0;justify-content:center;}
 
   .eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:var(--label);margin-bottom:clamp(10px,2.4vh,20px);}
@@ -88,15 +88,13 @@
   .who li{padding:0 0 0 40px;background:url(images/bullet.svg) no-repeat 0 .1em;background-size:22px 22px;line-height:1.45;font-size:var(--body);font-weight:600;}
 
   /* Clients */
-  #clients .eyebrow{color:var(--magenta);}
+  #clients .eyebrow{color:var(--green-tint);text-shadow:0 1px 0 var(--green-shadow);}
   .clients{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,3.4vh,34px) 40px;}
-  .clients li{padding:2px 0 2px 20px;border-left:6px solid var(--cyan);}
-  .clients li:nth-child(3n+2){border-color:var(--magenta);}
-  .clients li:nth-child(3n){border-color:var(--indigo);}
-  .clients .name{display:block;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;font-size:clamp(19px,min(2vw,3.6vh),28px);color:var(--ink);}
+  .clients li{padding:2px 0 2px 20px;border-left:6px solid #fff;}
+  .clients .name{display:block;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;font-size:clamp(19px,min(2vw,3.6vh),28px);color:#fff;text-shadow:0 1px 0 var(--green-shadow);}
   .clients a.name{cursor:none;}
-  .clients a.name span{border-bottom:2px solid var(--ink);}
-  .clients .what{display:block;margin-top:8px;font-weight:600;line-height:1.4;font-size:var(--body);color:#3a3f3f;}
+  .clients a.name span{border-bottom:2px solid rgba(255,255,255,.7);}
+  .clients .what{display:block;margin-top:8px;font-weight:600;line-height:1.4;font-size:var(--body);color:#fff;text-shadow:0 1px 0 var(--green-shadow);}
 
   /* Contact */
   .contact{display:flex;flex-wrap:wrap;gap:28px 44px;align-items:flex-start;}
@@ -182,8 +180,7 @@
     <ul class="navigation">
       <li class="n1" data-navto="1"><span>Serious strategy. Playful delivery.</span></li>
       <li class="n2" data-navto="2"><span>Big thinking for good businesses.</span></li>
-      <li class="n3" data-navto="3"><span>Playing in good company.</span></li>
-      <li class="n4" data-navto="4"><span>Come and play. You’ll like it.</span></li>
+      <li class="n3" data-navto="4"><span>Come and play. You’ll like it.</span></li>
     </ul>
   </section>
 

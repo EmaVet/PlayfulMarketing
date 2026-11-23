@@ -11,9 +11,11 @@
     --cyan:#009fdf; --cyan-shadow:#0077a7; --cyan-tint:#bfe6f7; --cyan-navtint:#5eb7e6;
     --indigo:#273584; --indigo-shadow:#1d2863; --indigo-tint:#a9adda; --indigo-navtint:#6d73a4;
     --magenta:#c71682; --magenta-shadow:#951061; --magenta-tint:#f4b0d7; --magenta-navtint:#d466a2;
-    --body:clamp(16px,1.5vw,23px);
-    --headline:clamp(30px,4.6vw,64px);
+    --body:clamp(16px,min(1.5vw,2.4vh),23px);
+    --headline:clamp(30px,min(4.6vw,6.2vh),64px);
     --label:clamp(13px,1.15vw,16px);
+    --bar:clamp(44px,7.4vh,64px);
+    --pad:clamp(28px,6vh,96px);
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;width:100%;}
@@ -32,32 +34,33 @@
 
   /* Slide 1 — hero */
   #slide1{background:var(--light);color:var(--ink);}
-  #slide1 .inner{padding:88px 0 200px;}
-  .kicker{margin:0 0 26px;text-transform:uppercase;font-weight:800;line-height:1;letter-spacing:.2em;font-size:clamp(15px,1.6vw,20px);color:var(--pink);}
-  .hero-words{margin:0;text-transform:uppercase;font-weight:800;line-height:.9;letter-spacing:-.015em;font-size:clamp(38px,8.2vw,104px);cursor:none;}
+  #slide1 .inner{padding:clamp(32px,8vh,88px) 0 calc(var(--bar)*4 + 8px);}
+  .kicker{margin:0 0 clamp(14px,3.2vh,26px);text-transform:uppercase;font-weight:800;line-height:1;letter-spacing:.2em;font-size:clamp(15px,1.6vw,20px);color:var(--pink);}
+  .hero-words{margin:0;text-transform:uppercase;font-weight:800;line-height:.9;letter-spacing:-.015em;font-size:clamp(38px,min(8.2vw,10vh),104px);cursor:none;}
   .hero-words span{transition:color .25s ease;}
-  .subline{margin-top:44px;display:flex;flex-wrap:wrap;align-items:flex-end;gap:26px 48px;max-width:860px;}
-  .subline .lead{font-size:clamp(20px,2.3vw,32px);font-weight:800;line-height:1.15;letter-spacing:-.01em;color:var(--ink);}
+  .subline{margin-top:clamp(18px,4.6vh,44px);display:flex;flex-wrap:wrap;align-items:flex-end;gap:26px 48px;max-width:860px;}
+  .subline .lead{font-size:clamp(20px,min(2.3vw,4vh),32px);font-weight:800;line-height:1.15;letter-spacing:-.01em;color:var(--ink);}
   .subline p{flex:1;min-width:280px;margin:0;font-size:var(--body);font-weight:600;line-height:1.55;color:#3a3f3f;}
 
   /* Hero nav quote bars */
   .navigation{position:absolute;bottom:0;left:0;width:100%;margin:0;padding:0;list-style:none;}
-  .navigation li{height:64px;overflow:hidden;cursor:none;}
-  .navigation li span{line-height:48px;display:block;width:min(100% - 12vw, 1000px);margin:16px auto 0;font-weight:800;text-transform:uppercase;font-size:clamp(20px,3.2vw,44px);white-space:nowrap;transition:color .2s ease;}
+  .navigation li{height:var(--bar);overflow:hidden;cursor:none;}
+  .navigation li span{line-height:calc(var(--bar)*.75);display:block;width:min(100% - 12vw, 1000px);margin:calc(var(--bar)*.25) auto 0;font-weight:800;text-transform:uppercase;font-size:clamp(20px,min(3.2vw,5.2vh),44px);white-space:nowrap;transition:color .2s ease;}
   .navigation .n1{background:var(--cyan);}   .navigation .n1 span{color:var(--cyan-navtint);}
   .navigation .n2{background:var(--indigo);} .navigation .n2 span{color:var(--indigo-navtint);}
-  .navigation .n3{background:var(--magenta);}.navigation .n3 span{color:var(--magenta-navtint);}
+  .navigation .n3{background:var(--ink);}    .navigation .n3 span{color:#6f7676;}
+  .navigation .n4{background:var(--magenta);}.navigation .n4 span{color:var(--magenta-navtint);}
   .navigation li:hover span{color:#fff;}
 
-  /* Slides 2–4 */
+  /* Slides 2–5 */
   #slide2{background:var(--cyan);color:#fff;}
   #slide3{background:var(--indigo);color:#fff;}
   #slide4{background:var(--magenta);color:#fff;}
-  #slide2 .inner,#slide4 .inner{padding:96px 0;}
-  #slide3 .inner{padding:96px 0;justify-content:center;}
-  #slide2 .inner{justify-content:flex-start;}
+  #slide2 .inner,#slide4 .inner,#clients .inner{padding:var(--pad) 0;}
+  #clients{background:var(--ink);color:#fff;}
+  #slide3 .inner{padding:var(--pad) 0;justify-content:center;}
 
-  .eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:var(--label);margin-bottom:20px;}
+  .eyebrow{font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:var(--label);margin-bottom:clamp(10px,2.4vh,20px);}
   #slide2 .eyebrow{color:var(--cyan-tint);text-shadow:0 1px 0 var(--cyan-shadow);}
   #slide3 .eyebrow{color:var(--indigo-tint);text-shadow:0 1px 0 var(--indigo-shadow);}
   #slide4 .eyebrow{color:var(--magenta-tint);text-shadow:0 1px 0 var(--magenta-shadow);}
@@ -69,20 +72,31 @@
 
   .lede{margin:0;font-weight:700;line-height:1.45;font-size:var(--body);}
 
-  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 40px;line-height:1.55;font-size:var(--body);font-weight:600;text-shadow:0 1px 0 var(--cyan-shadow);margin-bottom:22px;max-width:820px;}
+  .two-col{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px 40px;line-height:1.55;font-size:var(--body);font-weight:600;text-shadow:0 1px 0 var(--cyan-shadow);margin-bottom:clamp(12px,2.6vh,22px);max-width:820px;}
   .two-col p{margin:0;}
-  .emph{margin:0 0 26px;max-width:720px;font-weight:700;line-height:1.4;font-size:var(--body);text-shadow:0 1px 0 var(--cyan-shadow);}
+  .emph{margin:0 0 clamp(14px,3vh,26px);max-width:720px;font-weight:700;line-height:1.4;font-size:var(--body);text-shadow:0 1px 0 var(--cyan-shadow);}
   .emph .hi{color:#fffb00;}
-  .h-label{font-weight:800;text-shadow:0 1px 0 var(--cyan-shadow);margin-bottom:16px;font-size:var(--label);text-transform:uppercase;letter-spacing:.14em;}
+  .h-label{font-weight:800;text-shadow:0 1px 0 var(--cyan-shadow);margin-bottom:clamp(10px,2vh,16px);font-size:var(--label);text-transform:uppercase;letter-spacing:.14em;}
   .tags{margin:0;padding:0;list-style:none;}
-  .tags li{display:inline-block;margin:0 10px 12px 0;background:#fff;border-bottom:1px solid var(--cyan-shadow);color:var(--cyan);padding:0 12px;font-weight:800;text-transform:uppercase;font-size:clamp(13px,1.1vw,16px);line-height:32px;}
+  .tags li{display:inline-block;margin:0 10px clamp(7px,1.4vh,12px) 0;background:#fff;border-bottom:1px solid var(--cyan-shadow);color:var(--cyan);padding:0 12px;font-weight:800;text-transform:uppercase;font-size:clamp(12px,min(1.1vw,2vh),16px);line-height:clamp(25px,4.2vh,32px);}
   .tag-break{display:none;}
 
   .who-label{font-weight:800;margin-bottom:18px;font-size:var(--label);text-transform:uppercase;letter-spacing:.14em;color:var(--indigo-tint);}
   .who{margin:0 0 26px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px 40px;max-width:900px;}
   .who li{padding:0 0 0 40px;background:url(images/bullet.svg) no-repeat 0 .1em;background-size:22px 22px;line-height:1.45;font-size:var(--body);font-weight:600;}
 
-  /* Contact (slide 4) */
+  /* Clients */
+  #clients .eyebrow{color:var(--pink);}
+  .clients{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(18px,3.4vh,34px) 40px;}
+  .clients li{padding:2px 0 2px 20px;border-left:5px solid var(--cyan);}
+  .clients li:nth-child(3n+2){border-color:var(--pink);}
+  .clients li:nth-child(3n){border-color:#fffb00;}
+  .clients .name{display:block;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;line-height:1.1;font-size:clamp(19px,min(2vw,3.6vh),28px);color:#fff;}
+  .clients a.name{cursor:none;}
+  .clients a.name span{border-bottom:2px solid rgba(255,255,255,.55);}
+  .clients .what{display:block;margin-top:8px;font-weight:600;line-height:1.4;font-size:var(--body);color:#c9cdcd;}
+
+  /* Contact */
   .contact{display:flex;flex-wrap:wrap;gap:28px 44px;align-items:flex-start;}
   .contact .social{display:flex;align-items:center;justify-content:center;width:64px;height:64px;border:2px solid #fff;border-radius:50%;cursor:none;flex:0 0 auto;}
   .contact .social img{width:64px;height:64px;}
@@ -91,13 +105,20 @@
   .contact .note{margin-top:9px;font-size:clamp(13px,1.05vw,15px);font-weight:600;opacity:.9;text-shadow:0 1px 0 rgba(0,0,0,.2);}
   .to-top{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);padding-top:24px;background:url(images/more.svg) no-repeat 50% 0;background-size:24px 18px;width:120px;text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;cursor:none;}
 
+  /* Flow mode: set by the script when a panel's content is taller than the window,
+     so nothing is ever cut off. Panels become normal scrolling sections. */
+  .measure .slide{position:static!important;height:auto!important;min-height:0!important;}
+  .measure .inner{height:auto!important;}
+  .flow .slide{height:auto;min-height:100vh;overflow:visible;}
+  .flow .inner{height:auto;min-height:100vh;}
+
   @media (max-width:1000px){
     /* Panels size to content; equal 40px side gutters (fixed px, not vw) */
     body{height:auto!important;}
     .slide{position:static!important;height:auto!important;min-height:0!important;overflow:visible;}
     /* First slide sizes to its content so the next section peeks above the fold */
-    .inner{width:100%!important;padding:60px 40px 64px!important;justify-content:flex-start!important;}
-    #slide1 .inner,#slide2 .inner,#slide3 .inner,#slide4 .inner{padding:60px 40px 48px!important;}
+    .inner{width:100%!important;min-height:0!important;padding:60px 40px 64px!important;justify-content:flex-start!important;}
+    #slide1 .inner,#slide2 .inner,#slide3 .inner,#slide4 .inner,#clients .inner{padding:60px 40px 48px!important;}
     /* Hero kicker ("Playful marketing") a touch smaller */
     #slide1 .kicker{font-size:clamp(13px,1.6vw,18px)!important;}
 
@@ -116,6 +137,8 @@
 
     /* Stack two-column blocks */
     .two-col,.who{grid-template-columns:1fr!important;gap:18px!important;}
+    .clients{grid-template-columns:1fr!important;gap:22px!important;}
+    .clients .name{font-size:20px!important;}
 
     /* Tag chips hug their own text */
     .tags{display:flex!important;flex-wrap:wrap!important;gap:10px!important;}
@@ -157,7 +180,8 @@
     <ul class="navigation">
       <li class="n1" data-navto="1"><span>Serious strategy. Playful delivery.</span></li>
       <li class="n2" data-navto="2"><span>Big thinking for good businesses.</span></li>
-      <li class="n3" data-navto="3"><span>Come and play. You’ll like it.</span></li>
+      <li class="n3" data-navto="3"><span>Playing in good company.</span></li>
+      <li class="n4" data-navto="4"><span>Come and play. You’ll like it.</span></li>
     </ul>
   </section>
 
@@ -208,7 +232,41 @@
     </div>
   </section>
 
-  <!-- SLIDE 4 · CONTACT -->
+  <!-- CLIENTS -->
+  <section class="slide" id="clients">
+    <div class="inner">
+      <div class="eyebrow">Playing in good company.</div>
+      <h2 class="quote">Clients &amp; projects</h2>
+      <ul class="clients">
+        <li>
+          <a class="name" href="https://getaroundthem.com" target="_blank" rel="noopener"><span>GetAroundThem.com</span></a>
+          <span class="what">Bendigo Community Bank Sanctuary Point campaign 2027</span>
+        </li>
+        <li>
+          <span class="name">Five Little Pigs</span>
+          <span class="what">Cafe waitlist app</span>
+        </li>
+        <li>
+          <span class="name">Vehicle Logic</span>
+          <span class="what">AI-first marketing operating system</span>
+        </li>
+        <li>
+          <span class="name">Enchantra</span>
+          <span class="what">App build &amp; marketing</span>
+        </li>
+        <li>
+          <span class="name">Glitterazzi</span>
+          <span class="what">Marketing</span>
+        </li>
+        <li>
+          <span class="name">She Shapes History</span>
+          <span class="what">Viral PR management</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section class="slide" id="slide4">
     <div class="inner" style="position:relative;">
       <div class="eyebrow">Come and play. You’ll like it.</div>
@@ -234,11 +292,22 @@
 (function(){
   var wrap = document.getElementById('wrap');
   var sections = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var isTouch = ('ontouchstart' in window) || window.matchMedia('(max-width:1000px)').matches;
+  var root = document.documentElement;
+  var touch = ('ontouchstart' in window);
+  var narrow = window.matchMedia('(max-width:1000px)');
+  var flow = false;
 
-  /* --- Stacked parallax scroll (desktop) --- */
+  /* Does every panel's content fit inside one window-height? */
+  function fits(h){
+    root.classList.add('measure');
+    var ok = sections.every(function(s){ return s.offsetHeight <= h; });
+    root.classList.remove('measure');
+    return ok;
+  }
+
+  /* --- Stacked parallax scroll (desktop, when everything fits) --- */
   function onScroll(){
-    if(isTouch) return;
+    if(flow) return;
     var h = window.innerHeight;
     var st = window.pageYOffset || document.documentElement.scrollTop;
     sections.forEach(function(s,i){
@@ -248,16 +317,18 @@
   }
   function setup(){
     var h = window.innerHeight;
-    if(isTouch){
-      sections.forEach(function(s){ s.style.position='relative'; s.style.top='0'; });
-      wrap.style.height='auto';
-      return;
-    }
+    sections.forEach(function(s){ s.style.position=''; s.style.top=''; s.style.left=''; s.style.width=''; s.style.height=''; s.style.zIndex=''; });
+    wrap.style.height = '';
+    flow = touch || narrow.matches || !fits(h);
+    root.classList.toggle('flow', flow);
+    if(flow) return;   /* normal scrolling page: panels grow to fit their content */
     wrap.style.height = (h*sections.length)+'px';
     sections.forEach(function(s){ s.style.position='fixed'; s.style.left='0'; s.style.width='100%'; s.style.height=h+'px'; });
     onScroll();
   }
   window.addEventListener('resize', setup);
+  window.addEventListener('load', setup);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setup); }
   window.addEventListener('scroll', onScroll, {passive:true});
 
   /* Nav bars + back-to-top */
@@ -265,7 +336,8 @@
     el.addEventListener('click', function(e){
       e.preventDefault();
       var idx = parseInt(el.getAttribute('data-navto'),10) || 0;
-      window.scrollTo({top: window.innerHeight*idx, behavior:'smooth'});
+      var top = flow ? sections[idx].getBoundingClientRect().top + (window.pageYOffset || 0) : window.innerHeight*idx;
+      window.scrollTo({top: top, behavior:'smooth'});
     });
   });
   sections[0].querySelectorAll('.navigation li').forEach(function(li){ li.style.cursor='none'; });
